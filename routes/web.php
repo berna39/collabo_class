@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/player', [playerController::class, 'index']);
+
+Route::name('store_player')->post('store_player',[playerController::class, 'store_player']);

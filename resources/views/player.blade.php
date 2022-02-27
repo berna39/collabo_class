@@ -28,18 +28,19 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="{{ route('store_player') }}" method="POST">
+                            @csrf
                             <div class="form-group">
                                 <label for="noms">Noms : </label>
-                                <input type="text" class="form-control" id="noms" name="noms">
+                                <input type="text" class="form-control" id="noms" name="noms" required>
                             </div>
                             <div class="form-group">
                                 <label for="date_naissance">Date de Naissance : </label>
-                                <input type="date" class="form-control" id="date_naissance" name="date_naissance">
+                                <input type="date" class="form-control" id="date_naissance" name="date_naissance" required>
                             </div>
                             <div class="form-group">
                                 <label for="nationalite">Nationalité</label>
-                                <select class="form-control" id="nationalite" name="nationalite">
+                                <select class="form-control" id="nationalite" name="nationalite" required>
                                     <option value="Congolaise">Congolaise</option>
                                     <option value="Rwandaise">Rwandaise</option>
                                     <option value="Ougandaise">Ougandaise</option>
@@ -49,15 +50,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="poids">Poids: </label>
-                                <input type="number" class="form-control" id="poids" name="poids">
+                                <input type="number" class="form-control" id="poids" name="poids" required>
                             </div>
                             <div class="form-group">
                                 <label for="taille">Taille: </label>
-                                <input type="number" class="form-control" id="taille" name="taille">
+                                <input type="number" class="form-control" id="taille" name="taille" required>
                             </div>
                             <div class="form-group">
                                 <label for="biographie">Biographie</label>
-                                <textarea class="form-control" id="biographie" rows="3" name="biographie"></textarea>
+                                <textarea class="form-control" id="biographie" rows="3" name="biographie" required></textarea>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -88,11 +89,11 @@
                     <tr>
                         <th scope="row">{{ $item->id }}</th>
                         <td>{{ $item->noms }}</td>
-                        <td>{{ date_naissance}}</td>
+                        <td>{{ $item->date_naissance}}</td>
                         <td>{{ $item->nationalite }}</td>
                         <td>{{ $item->poids }}</td>
                         <td>{{ $item->taille }}</td>
-                        <td>@{{ $item->biographie }}</td>
+                        <td>{{ $item->biographie }}</td>
                         <td><button class="btn btn-primary">Edit</button>&nbsp;&nbsp;<button class="btn btn-danger">Delete</button></td>
                     </tr>
                     @endforeach
