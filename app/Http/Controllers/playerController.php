@@ -50,9 +50,26 @@ class playerController extends Controller
             'taille' => 'required',
             'biographie' => 'required',
         ]);
+            $id = $request->id;
+            $noms = $request->noms;
+            $date_naissance = $request->date_naissance;
+            $nationalite = $request->nationalite;
+            $poids = $request->poids;
+            $taille = $request->taille;
+            $biographie = $request->biographie;
 
-        DB::update("UPDATE players SET noms=?, date_naissance=?, nationalite=?, poids=?, taille=?, biographie=? WHERE id=? , [$request->noms, $request->date_naissance, $request->nationalite, $request->poids, $request->taille, $request->biographie, $request->id]");
-        return redirect()->route('edit_player')->with('message', 'Updated successfully');
+        // DB::update("UPDATE players SET noms= ?, date_naissance= ?, nationalite= ?, poids= ?, taille= ?, biographie= ? WHERE id= ? , [$noms, $date_naissance, $nationalite, $poids, $taille, $biographie, $id]");
+
+        DB::table('players')->where('id', $id)->update([
+            'noms' => $request->noms,
+            'date_naissance' => $request->date_naissance,
+            'nationalite' => $request->nationalite,
+            'poids' => $request->poids,
+            'taille' => $request->taille,
+            'biographie' => $request->biographie,
+        ]);
+
+        return redirect()->route('index')->with('messageEdit', 'Updated successfully');
     }
 
     public function destroy_player($id){

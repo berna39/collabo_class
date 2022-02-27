@@ -16,6 +16,19 @@
             <h4>PLAYER INSERTED SUCCESSFULLY</h4>
         </div>
         @endif
+
+        @if(Session::has('messageEdit'))
+        <div class="alert alert-success text-center">
+            <h4>PLAYER UPDATED SUCCESSFULLY</h4>
+        </div>
+        @endif
+
+        @if(Session::has('messageDelete'))
+        <div class="alert alert-success text-center">
+            <h4>PLAYER DELETED SUCCESSFULLY</h4>
+        </div>
+        @endif
+
         <h3>Players list</h3>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -99,7 +112,7 @@
                         <td>{{ $item->poids }}</td>
                         <td>{{ $item->taille }}</td>
                         <td>{{ $item->biographie }}</td>
-                        <td><a href="edit_player/{{$item->id}}" class="btn btn-primary">Edit</a>&nbsp;&nbsp;<button class="btn btn-danger">Delete</button></td>
+                        <td><a href="edit_player/{{$item->id}}" class="btn btn-primary">Edit</a>&nbsp;&nbsp;<a href="destroy_player/{{$item->id}}" class="btn btn-danger">Delete</button></td>
                     </tr>
                     @endforeach
                 </tbody>
