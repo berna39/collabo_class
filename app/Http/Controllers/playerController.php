@@ -32,6 +32,31 @@ class playerController extends Controller
             'biographie' => $request->biographie,
         ]);
 
-        return 'okey store';
+        return redirect()->route('index')->with('message', 'Inserted successfully');
+    }
+
+    public function edit_player($id){
+        $data = DB::select("SELECT * FROM players WHERE id=?",[$id]);
+        $player = $data[0];
+        return view('edit_player', compact('player'));
+    }
+
+    public function update_player(Request $request){
+        $request->validate([
+            'noms' => 'required',
+            'date_naissance' => 'required',
+            'nationalite' => 'required',
+            'poids' => 'required',
+            'taille' => 'required',
+            'biographie' => 'required',
+        ]);
+
+        DB::update("UPDATE players SET noms=?, date_naissance=?, nationalite=?, poids=?, taille=?, biographie=? WHERE id=? , [$request->noms, $request->date_naissance, $request->nationalite, $request->poids, $request->taille, $request->biographie, $request->id]");
+        return redirect()->route('edit_player')->with('message', 'Updated successfully');
+    }
+
+    public function destroy_player($id){
+        $deleted = DB::table('players')->where('id', '=', $id)->delete();
+        return redirect()->route('index')->with('messageDelete', 'Player deleted successfully');
     }
 }
