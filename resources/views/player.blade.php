@@ -84,16 +84,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($players as $item)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <th scope="row">{{ $item->id }}</th>
+                        <td>{{ $item->noms }}</td>
+                        <td>{{ date_naissance}}</td>
+                        <td>{{ $item->nationalite }}</td>
+                        <td>{{ $item->poids }}</td>
+                        <td>{{ $item->taille }}</td>
+                        <td>@{{ $item->biographie }}</td>
                         <td><button class="btn btn-primary">Edit</button>&nbsp;&nbsp;<button class="btn btn-danger">Delete</button></td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
 
