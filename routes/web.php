@@ -2,6 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+
+
+use App\Http\Controllers\Volcontroller;
+
+Use App\Http\Controllers\ProduitCotroller;
+
+use App\Http\Controllers\AgentController;
+
 use App\Http\Controllers\livrecontrolleur;
 
 
@@ -29,6 +37,36 @@ Route::post('/store_livre',[livrecontrolleur::class,'store'])->name('store_livre
 Route::get('/edit_livre/{id}',[livrecontrolleur::class,'edit'])->name('edit_livre');
 Route::POST('/update_livre',[livrecontrolleur::class,'update'])->name('update_livre');
 Route::get('/delete_livre/{id}',[livrecontrolleur::class,'delete'])->name('delete_livre');
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+Route::get('/master', function () {
+    return view('master');
+});
+
+Route::get('/vol',[Volcontroller::class ,'index'])->name('vol');
+
+Route::get('/new_vol', function () { 
+    return view('new_vol');
+
+})->name('new_vol');
+
+Route::post('/store_vol',[Volcontroller::class ,'store'])->name('store_vol');
+Route::get('/edit_vol/{id}',[Volcontroller::class ,'edit'])->name('edit_vol');
+Route::post('/update_vol',[Volcontroller::class ,'update'])->name('update_vol');
+Route::get('/destroy_vol/{id}',[Volcontroller::class ,'destroy'])->name('destroy_vol');
+
+Route::get('/new_agent', function () {
+    return view('new_agent');
+})->name('new_agent');
+Route::post('/store_agent', [ AgentController::class,'store' ])->name('store_agent');
+Route::get('/agents', [ AgentController::class,'index'])->name('agents');
+Route::get('/edit_agent/{id}', [ AgentController::class,'edit'])->name('edit_agent');
+Route::post('/update_agent', [ AgentController::class,'update'])->name('update_agent');
+Route::get('/delete_agent/{id}', [ AgentController::class,'destroy'])->name('delete_agent');
 
     
 Route::get('/new-voiture', function(){
