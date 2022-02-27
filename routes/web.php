@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Volcontroller;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,24 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/master', function () {
+    return view('master');
+});
+Route::get('/vol',[Volcontroller::class ,'index'])->name('vol');
+
+Route::get('/new_vol', function () { 
+    return view('new_vol');
+
+})->name('new_vol');
+
+Route::post('/store_vol',[Volcontroller::class ,'store'])->name('store_vol');
+Route::get('/edit_vol/{id}',[Volcontroller::class ,'edit'])->name('edit_vol');
+Route::post('/update_vol',[Volcontroller::class ,'update'])->name('update_vol');
+Route::get('/delete_vol/{id}',[Volcontroller::class ,'destroy'])->name('delete_vol');
+
+
+
+
+
