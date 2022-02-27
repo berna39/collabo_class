@@ -33,7 +33,7 @@
     <input type="text" name="description" id="description" class="form-control" value="{{$vol->description}}">
 </div>
 <div class="line"></div>
-<input type="submit" value="modifier">
+<input type="submit" value="edit">
 </form>
 </div>
 

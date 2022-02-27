@@ -34,7 +34,7 @@ Route::get('/new_vol', function () {
 Route::post('/store_vol',[Volcontroller::class ,'store'])->name('store_vol');
 Route::get('/edit_vol/{id}',[Volcontroller::class ,'edit'])->name('edit_vol');
 Route::post('/update_vol',[Volcontroller::class ,'update'])->name('update_vol');
-Route::get('/delete_vol/{id}',[Volcontroller::class ,'destroy'])->name('delete_vol');
+Route::get('/destroy_vol/{id}',[Volcontroller::class ,'destroy'])->name('destroy_vol');
 
 
 

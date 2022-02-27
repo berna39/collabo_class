@@ -34,7 +34,7 @@
             <td>
             <a href="{{'/edit_vol/'.$item->id}}" class="btn btn-primary">edit |</a>
   
-  <a href="{{'/delete_vol/'.$item->id}} " class="btn btn-warning">delete</a>
+  <a href="{{'/destroy_vol/'.$item->id}} " class="btn btn-warning">delete</a>
             </td>
         </tr>
         @endforeach
