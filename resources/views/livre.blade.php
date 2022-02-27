@@ -1,11 +1,9 @@
 @extends('layout.index')
 @section('contenu')
- <div class="container">
- <br><br><br><br><br>
+ <div class="container pt-5">
  <h2>NOS LIVRES</h2>
      <a href="{{route('new_livre')}}" class="offset-8 btn btn-primary">Nouveau livre</a>
      <table class="table  table-bordered stripped mt-2">
-
       <thead>
           <th>Numero</th>
           <th>Livre</th>
@@ -38,5 +36,4 @@
       </tbody>
      </table>
  </div> 
-
 @endsection

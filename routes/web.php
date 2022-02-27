@@ -29,19 +29,11 @@ Route::post('/store_livre',[livrecontrolleur::class,'store'])->name('store_livre
 Route::get('/edit_livre/{id}',[livrecontrolleur::class,'edit'])->name('edit_livre');
 Route::POST('/update_livre',[livrecontrolleur::class,'update'])->name('update_livre');
 Route::get('/delete_livre/{id}',[livrecontrolleur::class,'delete'])->name('delete_livre');
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/master', function(){
-    return view('layouts.master');
-    });
 
     
 Route::get('/new-voiture', function(){
     return view('new_voiture');;
-})->name('voitures');
-    
+})->name('voitures'); 
 Route::get('/voiture',[VoitureController::class,'index'])->name('voiture.index');
 Route::post('/voiture/store/',[VoitureController::class,'store'])->name('voiture.store');
 Route::get('/voiture/edit/{id}',[VoitureController::class,'edit'])->name('voiture.edit');
