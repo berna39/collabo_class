@@ -66,3 +66,11 @@ Route::post('/store_produit',[ProduitCotroller::class,'store'])->name('store_pro
 Route::post('/update_produit',[ProduitCotroller::class,'update'])->name('update_produit');
 Route::get('/delete_produit/{id}',[ProduitCotroller::class,'destroy'])->name('delete_produit');
 
+Route::get('/new_agent', function () {
+    return view('new_agent');
+})->name('new_agent');
+Route::post('/store_agent', [ AgentController::class,'store' ])->name('store_agent');
+Route::get('/agents', [ AgentController::class,'index'])->name('agents');
+Route::get('/edit_agent/{id}', [ AgentController::class,'edit'])->name('edit_agent');
+Route::post('/update_agent', [ AgentController::class,'update'])->name('update_agent');
+Route::get('/delete_agent/{id}', [ AgentController::class,'destroy'])->name('delete_agent');
