@@ -2,18 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-
-Use App\Http\Controllers\ProduitCotroller;
-
-use App\Http\Controllers\AgentController;
-
 use App\Http\Controllers\livrecontrolleur;
 
 
-use App\Http\Controllers\playerController;
+use App\Http\Controllers\PlayerController;
 
 use App\Http\Controllers\VoitureController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -39,46 +33,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/master', function () {
-    return view('master');
-});
-Route::get('/new_agent', function () {
-    return view('new_agent');
-})->name('new_agent');
-
-
-
-Route::post('/store_agent', [ AgentController::class,'store' ])->name('store_agent');
-Route::get('/agents', [ AgentController::class,'index'])->name('agents');
-Route::get('/edit_agent/{id}', [ AgentController::class,'edit'])->name('edit_agent');
-Route::post('/update_agent', [ AgentController::class,'update'])->name('update_agent');
-Route::get('/delete_agent/{id}', [ AgentController::class,'destroy'])->name('delete_agent');
-
 Route::get('/master', function(){
     return view('layouts.master');
     });
 
     
 Route::get('/new-voiture', function(){
-    return view('new_voiture');
+    return view('new_voiture');;
 })->name('voitures');
     
-Route::get('/voiture',[VoitureController::class,'index'])->name('aficher_voiture');
-Route::post('/store-voiture',[VoitureController::class,'store'])->name('store-voiture');
-Route::get('/edit-voiture/{id}',[VoitureController::class,'edit'])->name('edit-voiture');
-Route::post('/update-voiture',[VoitureController::class,'update'])->name('update-voiture');
-Route::get('/delete-voiture/{id}',[VoitureController::class,'destroy'])->name('delete-voiture');
+Route::get('/voiture',[VoitureController::class,'index'])->name('voiture.index');
+Route::post('/voiture/store/',[VoitureController::class,'store'])->name('voiture.store');
+Route::get('/voiture/edit/{id}',[VoitureController::class,'edit'])->name('voiture.edit');
+Route::post('/voiture/update',[VoitureController::class,'update'])->name('voiture.update');
+Route::get('/voiture/delete/{id}',[VoitureController::class,'destroy'])->name('voiture.delete');
 
 Route::name('index')->get('/player', [playerController::class, 'index']);
-
-Route::name('store_player')->post('store_player',[playerController::class, 'store_player']);
-
-Route::name('edit_player')->get('/edit_player/{id}', [playerController::class, 'edit_player']);
-
-Route::name('update_player')->post('update_player',[playerController::class, 'update_player']);
-
-Route::name('destroy_player')->get('/destroy_player/{id}', [playerController::class, 'destroy_player']);
+Route::name('store_player')->post('store_player',[playerController::class, 'store']);
+Route::name('edit_player')->get('/edit_player/{id}', [playerController::class, 'edit']);
+Route::name('update_player')->post('update_player',[playerController::class, 'update']);
+Route::name('destroy_player')->get('/destroy_player/{id}', [playerController::class, 'destroy']);
 
 
 Route::get('/new_produit', function () {
@@ -91,3 +65,4 @@ Route::get('/edit_produit/{id}', [ProduitCotroller::class, 'edit'])->name('edit_
 Route::post('/store_produit',[ProduitCotroller::class,'store'])->name('store_produit');
 Route::post('/update_produit',[ProduitCotroller::class,'update'])->name('update_produit');
 Route::get('/delete_produit/{id}',[ProduitCotroller::class,'destroy'])->name('delete_produit');
+
