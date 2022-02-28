@@ -18,8 +18,7 @@ class AgentController extends Controller
             'date_naissance'=>'required',
             'poste'=>'required',
             'salaire'=>'required',
-            'biographie'=>'required'
-           
+            'biographie'=>'required'           
         ]);
 
         \DB::table('agent')->insert([

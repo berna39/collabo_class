@@ -30,8 +30,8 @@
                 <td>{{$item->salaire}}</td>
                 <td>{{$item->biographie}}</td>
                 <td>
-                    <a class="btn btn-success" href="{{'/edit_agent/'.$item->id}}".$id>edit</a>
-                    <a class="btn btn-danger" href="{{'/delete_agent/'.$item->id}}">delete</a>
+                    <a class="btn btn-success" href="{{'/agent.edit/'.$item->id}}".$id>edit</a>
+                    <a class="btn btn-danger" href="{{'/agent.delete/'.$item->id}}">delete</a>
                 </td>
             </tr>
             @endforeach
