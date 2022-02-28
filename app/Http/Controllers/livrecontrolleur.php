@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class livrecontrolleur extends Controller
+class Livrecontrolleur extends Controller
 {
    
     public function index()
@@ -16,7 +16,7 @@ class livrecontrolleur extends Controller
     public function store (Request $request)
     {
 
-    
+
         $request->validate([
             'titre'=>'required',
             'annee'=>'required',
@@ -39,9 +39,7 @@ class livrecontrolleur extends Controller
  
      ]);
 
-     return Response()->json([
-        "message"=>"insertion sussess"
-    ]);
+     return Response()->json([  "message"=>"insertion sussess" ]);
          
     
          
