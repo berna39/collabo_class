@@ -53,11 +53,11 @@ Route::get('/destroy_vol/{id}',[Volcontroller::class ,'destroy'])->name('destroy
 Route::get('/new_agent', function () {
     return view('new_agent');
 })->name('new_agent');
-Route::post('/store_agent', [ AgentController::class,'store' ])->name('store_agent');
-Route::get('/agents', [ AgentController::class,'index'])->name('agents');
-Route::get('/edit_agent/{id}', [ AgentController::class,'edit'])->name('edit_agent');
-Route::post('/update_agent', [ AgentController::class,'update'])->name('update_agent');
-Route::get('/delete_agent/{id}', [ AgentController::class,'destroy'])->name('delete_agent');
+Route::post('/agent/store', 'AgentController@store')->name('agent.store');
+Route::get('/agent/index', 'AgentController@index')->name('agent.index');
+Route::get('/agent/edit/{id}', 'AgentController@edit')->name('agent.edit');
+Route::post('/agent/update', 'AgentController@update')->name('agent.update');
+Route::get('/agent/delete/{id}', 'AgentController@destroy')->name('agent.delete');
 
     
 Route::get('/new-voiture', function(){
