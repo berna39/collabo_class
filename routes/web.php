@@ -1,18 +1,20 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Codedge\Fpdf\Fpdf\Fpdf;
 use Illuminate\Http\Request;
 
 Use App\Http\Controllers\ProduitCotroller;
 
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\AgentController;
+
 
 use App\Http\Controllers\livrecontrolleur;
 
-
 use App\Http\Controllers\playerController;
-
 use App\Http\Controllers\VoitureController;
+
 
 
 /*
@@ -92,3 +94,13 @@ Route::post('/store_produit',[ProduitCotroller::class,'store'])->name('store_pro
 Route::post('/update_produit',[ProduitCotroller::class,'update'])->name('update_produit');
 Route::get('/delete_produit/{id}',[ProduitCotroller::class,'destroy'])->name('delete_produit');
 
+
+Route::get('/exemple', function () {
+    $fpdf = new Fpdf;
+    $fpdf->AddPage();
+    $fpdf->SetFont('Courier', 'B', 18);
+    $fpdf->Cell(50, 25, 'Hello World!');
+    $fpdf->Output();
+    exit;
+
+});
