@@ -91,3 +91,4 @@ Route::get('/edit_produit/{id}', [ProduitCotroller::class, 'edit'])->name('edit_
 Route::post('/store_produit',[ProduitCotroller::class,'store'])->name('store_produit');
 Route::post('/update_produit',[ProduitCotroller::class,'update'])->name('update_produit');
 Route::get('/delete_produit/{id}',[ProduitCotroller::class,'destroy'])->name('delete_produit');
+
