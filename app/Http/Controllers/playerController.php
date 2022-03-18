@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class playerController extends Controller
+class PlayerController extends Controller
 {
     public function index(){
         $players = DB::select("SELECT * FROM players ORDER BY id DESC");
         return view('player', compact('players'));
     }
 
-    public function store_player(Request $request){
+    public function store(Request $request){
 
         $request->validate([
             'noms' => 'required',
@@ -35,13 +35,13 @@ class playerController extends Controller
         return redirect()->route('index')->with('message', 'Inserted successfully');
     }
 
-    public function edit_player($id){
+    public function edit($id){
         $data = DB::select("SELECT * FROM players WHERE id=?",[$id]);
         $player = $data[0];
         return view('edit_player', compact('player'));
     }
 
-    public function update_player(Request $request){
+    public function update(Request $request){
         $request->validate([
             'noms' => 'required',
             'date_naissance' => 'required',
@@ -58,8 +58,6 @@ class playerController extends Controller
             $taille = $request->taille;
             $biographie = $request->biographie;
 
-        // DB::update("UPDATE players SET noms= ?, date_naissance= ?, nationalite= ?, poids= ?, taille= ?, biographie= ? WHERE id= ? , [$noms, $date_naissance, $nationalite, $poids, $taille, $biographie, $id]");
-
         DB::table('players')->where('id', $id)->update([
             'noms' => $request->noms,
             'date_naissance' => $request->date_naissance,
@@ -72,7 +70,7 @@ class playerController extends Controller
         return redirect()->route('index')->with('messageEdit', 'Updated successfully');
     }
 
-    public function destroy_player($id){
+    public function destroy($id){
         $deleted = DB::table('players')->where('id', '=', $id)->delete();
         return redirect()->route('index')->with('messageDelete', 'Player deleted successfully');
     }

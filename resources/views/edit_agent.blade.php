@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <div class="container">   
-    <form action="{{route('update_agent')}}" method="POST" >
+    <form action="{{route('agent.update')}}" method="POST" >
        @csrf       
        <input type="hidden" value="{{$agent->id}}" name="id">          
             <div class="form-group">

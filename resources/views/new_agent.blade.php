@@ -52,7 +52,7 @@
             event.preventDefault();
             
             $.ajax({
-                url:'{{ route("store_agent")}}',
+                url:'{{ route("agent.store")}}',
                 method: 'POST',
                 data: new FormData(this),
                 processData:false,

@@ -5,7 +5,7 @@
   @if(\Session::has('message'))
       <div class="alert alert-primary">{{\Session::get('message')}}</div>
   @endif
-          <a href="{{route('new_produit')}}" class="btn btn-primary offset-10">New produit</a>
+  <a href="{{route('new_produit')}}" class="btn btn-primary offset-10">New produit</a>
   <table class="table table-bordered mt-3">
     <thead>
       <tr>

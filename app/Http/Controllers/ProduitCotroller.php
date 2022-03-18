@@ -21,10 +21,9 @@ class ProduitCotroller extends Controller
             'temprerature' => $request->temperature
         ]);
 
-        // return redirect()->route('index')->with('message', 'Insertion reussi');
-
         return response()->json(['message' => 'Inserted successfully']);
     }
+    
     public function edit($id){
         $data= \DB::select("SELECT * FROM produit WHERE id=?",[$id]);
         $produit=$data[0];
@@ -38,6 +37,6 @@ class ProduitCotroller extends Controller
 
     public function destroy($id){
         \DB::delete("DELETE FROM produit WHERE id=?",[$id]);
-        return \redirect()->route('produit')->with('message','suppression avec success');
+        return \redirect()->route('produit')->with('message', 'suppression avec success');
     }
 }

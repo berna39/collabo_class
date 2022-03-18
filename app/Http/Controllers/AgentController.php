@@ -8,7 +8,7 @@ class AgentController extends Controller
 {
     public function index(){
         $agent = \DB::select("SELECT * FROM agent order by id DESC");
-        return view('agents',compact('agent'));
+        return view('agents', compact('agent'));
     }
 
     public function store(Request $request){
@@ -18,9 +18,9 @@ class AgentController extends Controller
             'date_naissance'=>'required',
             'poste'=>'required',
             'salaire'=>'required',
-            'biographie'=>'required'
-           
+            'biographie'=>'required'           
         ]);
+
         \DB::table('agent')->insert([
             'noms'=>$request->noms,
             'sexe'=>$request->sexe,
@@ -29,13 +29,14 @@ class AgentController extends Controller
             'salaire'=>$request->salaire,
             'biographie'=>$request->biographie
         ]);
+
         return \redirect()->route('agents')->with('message','Inserer avec success');
     }
 
     public function edit($id){
         $data = \DB::select("SELECT * FROM agent WHERE id= ?",[$id]);
         $agent = $data[0];
-        return view('edit_agent',compact('agent'));
+        return view('edit_agent', compact('agent'));
     }
 
     public function update(Request $request){        
