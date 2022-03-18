@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\AgentController;
-use App\Http\Controllers\PlayerController;
 
 use App\Http\Controllers\livrecontrolleur;
 use App\Http\Controllers\playerController;
