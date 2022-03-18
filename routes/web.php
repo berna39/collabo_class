@@ -5,17 +5,17 @@ use Illuminate\Http\Request;
 
 Use App\Http\Controllers\ProduitCotroller;
 
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\Route;
+
 
 use App\Http\Controllers\AgentController;
 
-
 use App\Http\Controllers\livrecontrolleur;
-
 use App\Http\Controllers\playerController;
 use App\Http\Controllers\VoitureController;
-
-
+use App\Models\player;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,10 +96,19 @@ Route::get('/delete_produit/{id}',[ProduitCotroller::class,'destroy'])->name('de
 
 
 Route::get('/exemple', function () {
+
+    $players = player::all();
+
     $fpdf = new Fpdf;
     $fpdf->AddPage();
-    $fpdf->SetFont('Courier', 'B', 18);
-    $fpdf->Cell(50, 25, 'Hello World!');
+    $fpdf->SetFont('Courier', 'B', 12);
+    foreach ($players as $row) {
+        $fpdf->Cell(40, 25, $row->noms);
+        $fpdf->Cell(40, 25, $row->date_naissance);
+        $fpdf->Cell(40, 25, $row->nationalite);
+        $fpdf->Cell(40, 25, $row->biographie);
+        $fpdf->Ln();
+    }
     $fpdf->Output();
     exit;
 
